@@ -22,7 +22,7 @@ export function populateDropdown(entries) {
 }
 
 
-export function createPokeCard(imgSrc, pokeName, pokeGenus, pokeTypes, desc) {
+export function createPokeCard(imgSrc, pokeName, pokeGenus, pokeTypes, desc, height, weight) {
   const template = document.getElementById("cardTemplate");
   const clone = template.content.firstElementChild.cloneNode(true);
 
@@ -49,8 +49,14 @@ export function createPokeCard(imgSrc, pokeName, pokeGenus, pokeTypes, desc) {
 
   });
 
-  const text = clone.querySelector(".card-text");
+  const text = clone.querySelector(".desc");
   text.textContent = desc;
+
+  const heightEl = clone.querySelector(".height");
+  heightEl.textContent = `Height: ${height / 10} m`;
+
+  const weightEl = clone.querySelector(".weight");
+  weightEl.textContent = `Weight: ${weight / 10} kg`
 
   cardSpace.appendChild(clone);
 
