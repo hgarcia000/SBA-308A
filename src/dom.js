@@ -1,7 +1,28 @@
-import { cardSpace } from "./app.js";
+import { cardSpace, pokeSelect } from "./app.js";
+
+export function populateDropdown(entries) {
+    let i = 1;
+    
+        entries.forEach(element => {
+            let index = i;
+            if (index < 10) {
+                index = "00" + i;
+            } else if (index < 100) {
+                index = "0" + i;
+            }
+    
+            const optionEl = document.createElement("option");
+            optionEl.value = element.name;
+            optionEl.textContent = index + " - " + element.name.charAt(0).toLocaleUpperCase() + element.name.slice(1);
+    
+            pokeSelect.appendChild(optionEl);
+    
+            i++;
+        });
+}
 
 
-export function createPokeCard(imgSrc, pokeName, pokeTypes, desc) {
+export function createPokeCard(imgSrc, pokeName, pokeGenus, pokeTypes, desc) {
   const template = document.getElementById("cardTemplate");
   const clone = template.content.firstElementChild.cloneNode(true);
 
@@ -9,8 +30,11 @@ export function createPokeCard(imgSrc, pokeName, pokeTypes, desc) {
   img.src = imgSrc;
   img.alt = pokeName;
 
-  const title = clone.querySelector(".card-title");
+  const title = clone.querySelector("h3.card-title");
   title.textContent = pokeName.charAt(0).toLocaleUpperCase() + pokeName.slice(1);
+
+  const genus = clone.querySelector("h5.card-title");
+  genus.textContent = pokeGenus;
 
   const typesContainer = clone.querySelector(".pokeTypes");
 
@@ -28,8 +52,8 @@ export function createPokeCard(imgSrc, pokeName, pokeTypes, desc) {
   const text = clone.querySelector(".card-text");
   text.textContent = desc;
 
+  cardSpace.appendChild(clone);
 
-  return clone;
 }
 
 export function clear() {
