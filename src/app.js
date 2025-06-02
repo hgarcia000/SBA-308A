@@ -39,11 +39,11 @@ pokeSelect.addEventListener("change", async (e) => {
 
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${e.target.value}`);
         const entry = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${e.target.value}/`)
-        console.log(response.data.sprites.front_default);
+        console.log(response.data.types);
         console.log(response.data);
         console.log(entry.data);
 
-        const cardEl = createPokeCard(response.data.sprites.front_default, response.data.name, entry.data.flavor_text_entries[14].flavor_text);
+        const cardEl = createPokeCard(response.data.sprites.front_default, response.data.name, response.data.types, entry.data.flavor_text_entries[14].flavor_text);
 
         cardSpace.appendChild(cardEl);
     }
