@@ -1,6 +1,9 @@
+import { clear, createPokeCard } from "./dom.js";
 
 
-export const pokeSelect = document.getElementById("floatingSelect");
+const pokeSelect = document.getElementById("floatingSelect");
+
+export const cardSpace = document.querySelector(".pokeCard");
 
 (async function initializeDropdown() {
     
@@ -31,7 +34,17 @@ export const pokeSelect = document.getElementById("floatingSelect");
 
 pokeSelect.addEventListener("change", async (e) => {
     if (e.target.value) {
+
+        clear();
+
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${e.target.value}`);
+        const entry = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${e.target.value}/`)
+        console.log(response.data.sprites.front_default);
         console.log(response.data);
+        console.log(entry.data);
+
+        const cardEl = createPokeCard(response.data.sprites.front_default, response.data.name, entry.data.flavor_text_entries[14].flavor_text);
+
+        cardSpace.appendChild(cardEl);
     }
 });
