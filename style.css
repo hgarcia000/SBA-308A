@@ -1,7 +1,38 @@
-body{
+#container{
+    border: 5px solid rgb(50, 50, 50);
+    border-radius: 5px;
+}
+.contain{
+    z-index: 1;
+    height: 30vh;
     background-color: #e0294e;
+    border: 3px solid hsl(348, 75%, 26%);
 }
 
+.contain-white{
+    z-index: 1;
+    height: 30vh;
+    background-color: rgb(240, 240, 240);
+    border: 3px solid hsl(348, 75%, 26%);
+}
+
+.open{
+    z-index: 2;
+    position: fixed;
+    left: 50%;
+    bottom: 64.25%;
+    border: 5px solid hsl(348, 75%, 26%);
+    border-radius: 10vh;
+    height: 10vh;
+    width: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: whitesmoke;
+}
+
+.card{
+    z-index: 3;
+}
 .cardimg{
     background-color: rgb(176, 239, 255);
 }

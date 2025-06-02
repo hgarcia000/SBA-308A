@@ -19,16 +19,22 @@
     <script type="module" src="src/dex.js"></script>
     <script type="module" src="src/dom.js"></script>
 
-    <div class="form-floating">
-        <select style="width: 300px;" class="form-select my-1 mx-1" id="floatingSelect"
-            aria-label="Floating label select example">
-            <option selected disabled value="null">-----------</option>
-
-        </select>
-        <label for="floatingSelect" class="mx-1">Select a Pokémon</label>
+    <div id="container">
+        <div class="contain">
+            <div class="form-floating">
+                <select style="width: 300px;" class="form-select my-1 mx-1" id="floatingSelect"
+                    aria-label="Floating label select example">
+                    <option selected disabled value="null">-----------</option>
+        
+                </select>
+                <label for="floatingSelect" class="mx-1">Select a Pokémon</label>
+            </div>
+        
+            <div class="pokeCard"></div>
+        </div>
+        <div class="open"></div>
+        <div class="contain-white"></div>
     </div>
-
-    <div class="pokeCard"></div>
 
     <template id="cardTemplate">
         <div class="card mx-auto mb-3" style="max-width: 540px;">
