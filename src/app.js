@@ -8,7 +8,7 @@ export const cardSpace = document.querySelector(".pokeCard");
 
 (async function initializeDropdown() {
     
-    const response = await getPokeList(905);
+    const response = await getPokeList(1025);
     const entries = response.data.results;
 
     // console.log(entries);
@@ -30,7 +30,7 @@ pokeSelect.addEventListener("change", async (e) => {
         // console.log(entry.data);
         // console.log(response.data.height / 10);
         // console.log(response.data.weight / 10);
-        console.log(entry.data.genera);
+        // console.log(entry.data.genera);
 
         const descriptions = entry.data.flavor_text_entries.filter((e) => {return e.language.name === "en"});
 
