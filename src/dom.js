@@ -67,3 +67,17 @@ export function clear() {
     cardSpace.removeChild(cardSpace.firstChild);
   }
 }
+
+export function loadSpinner() {
+
+    const spinner = document.querySelector(".loading");
+
+    spinner.innerHTML = `<div class="spinner-border text-primary" style="width: 10rem; height: 10rem;" role="status">
+    <span class="visually-hidden">Loading...</span>
+    </div>`;
+
+    setTimeout(() => {
+        spinner.removeChild(spinner.firstChild)
+    }, 200);
+
+}
