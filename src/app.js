@@ -8,10 +8,10 @@ export const cardSpace = document.querySelector(".pokeCard");
 
 (async function initializeDropdown() {
     
-    const response = await getPokeList(386);
+    const response = await getPokeList(649);
     const entries = response.data.results;
 
-    console.log(entries);
+    // console.log(entries);
 
     populateDropdown(entries);
 
@@ -24,13 +24,16 @@ pokeSelect.addEventListener("change", async (e) => {
 
         const response = await getPokemon(e.target.value);
         const entry = await getPokemonEntry(e.target.value);
-        console.log(response.data.types);
-        console.log(response.data);
-        console.log(entry.data);
-        console.log(response.data.height / 10);
-        console.log(response.data.weight / 10);
+        // console.log(response.data.types);
+        // console.log(response.data);
+        // console.log(entry.data);
+        // console.log(response.data.height / 10);
+        // console.log(response.data.weight / 10);
+        // console.log(entry.data.flavor_text_entries);
 
-        createPokeCard(response.data.sprites.front_default, response.data.name, entry.data.genera[7].genus, response.data.types, entry.data.flavor_text_entries[13].flavor_text, response.data.height, response.data.weight);
+        const descriptions = entry.data.flavor_text_entries.filter((e) => {return e.language.name == "en"});
+
+        createPokeCard(response.data.sprites.front_default, response.data.name, entry.data.genera[7].genus, response.data.types, descriptions[descriptions.length - 1].flavor_text, response.data.height, response.data.weight);
 
     }
 });
